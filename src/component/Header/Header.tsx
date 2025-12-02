@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu, Search, ShoppingCart, User, ChevronDown } from "lucide-react";
+import { Menu } from "lucide-react";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,9 +38,53 @@ const Header: React.FC = () => {
             </span>
           </div>
         </div>
+     {/* /? Desktop */}
+     <div className="hidden lg:flex items-center space-x-6">
+      {navLinks.map((link) =>(
+        <a 
+        key={link.name}
+        href={link.href}
+        className="text-grey-600 hover:text-700 transition duration-150 font-medium text-sm">
+      {link.name}
+        </a>
+      ))}
 
+     </div>
+
+     {/* mobile menu */} 
+     <button 
+     onClick={() => setIsMenuOpen(!isMenuOpen)}
+     className="lg:hidden text-gray-600 hover:text-green-700 p-2 rounded-full hover:bg-gray-100
+     aria-label=Toggle Menu"
+     >
+     <Menu className="w-6 h-6"/>
+     </button>
         
       </nav>
+
+      {/* conditionally renderd */} 
+
+      <div className="flex items-center space-x-4">
+
+      
+      {isMenuOpen && (
+        <div className="lg:hidden bg-gray-50 border-t border-gray-200 py-2">
+          {navLinks.map((link) => (
+            <a
+             key={link.name}
+
+            href={link.href}
+            className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100 hover:text-green-700"
+            onClick={() => setIsMenuOpen(false)}
+            >
+         {link.name}
+         </a>
+         ))}
+
+        </div>
+        
+      )}
+      </div>
     </header>
   );
 };
