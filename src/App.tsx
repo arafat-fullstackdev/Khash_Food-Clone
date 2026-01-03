@@ -1,5 +1,5 @@
 import Header from "./component/Header/Header.js";
-import Search from "./component/Header/Search.js";
+import RouteControl from "./component/Header/RouteControl.js";
 //import Home from "./component/Home/Home";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
         
       {/* <h1>Vite + React</h1> */}
      <Header/>
-     <Search/>
+     <RouteControl/>
     </>
   )
 }
